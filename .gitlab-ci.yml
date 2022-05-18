@@ -1,7 +1,7 @@
-image: docker:19.03.12
+image: docker:stable
 
 services:
-  - docker:19.03.12-dind
+  - docker:stable-dind
 
 variables:
   USERNAME: badhusha_nb
