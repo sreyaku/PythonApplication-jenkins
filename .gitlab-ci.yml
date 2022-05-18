@@ -1,4 +1,5 @@
 image: docker:stable
+  privileged = true
 
 services:
   - docker:stable-dind
