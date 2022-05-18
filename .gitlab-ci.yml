@@ -31,6 +31,6 @@ docker-build:
 deploy:      
   stage: deploy  
   script:
-    - echo "Deploying application...."
+    - echo "Deploying application..."
     - echo "Using credentials $USERNAME, $PASSWORD "
     - echo "Application successfully deployed."
