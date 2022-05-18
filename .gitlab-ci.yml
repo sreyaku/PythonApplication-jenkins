@@ -1,8 +1,7 @@
-image: docker:stable
-  privileged = true
+image: docker:latest
 
 services:
-  - docker:stable-dind
+  - docker:dind
 
 variables:
   USERNAME: badhusha_nb
