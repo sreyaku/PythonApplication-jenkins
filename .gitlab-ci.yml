@@ -15,7 +15,7 @@ source:
   stage: source
   script:
     - echo "this is a stage named source..."
-    - echo "this is a sample job created for study purpose......"
+    - echo "this is a sample job created for study purpose......."
 
 
 docker-build:   
