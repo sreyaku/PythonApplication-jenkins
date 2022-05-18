@@ -1,0 +1,36 @@
+image: docker:19.03.12
+
+services:
+  - docker:19.03.12-dind
+
+variables:
+  USERNAME: badhusha_nb
+
+stages:         
+  - source
+  - docker-build
+  - deploy
+
+source:      
+  stage: source
+  script:
+    - echo "this is a stage named source..."
+    - echo "this is a sample job created for study purpose...."
+
+
+docker-build:   
+  stage: docker-build 
+  script:
+    - echo "Running build..."
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE
+    - docker push $CI_REGISTRY_IMAGE
+    - docker logout
+
+
+deploy:      
+  stage: deploy  
+  script:
+    - echo "Deploying application..."
+    - echo "Using credentials $USERNAME, $PASSWORD "
+    - echo "Application successfully deployed."
