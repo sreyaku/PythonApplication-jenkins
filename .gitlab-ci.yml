@@ -7,7 +7,8 @@ stages:
 
 create_merge_request:
   stage: createMR
+  tags:
+    - autoMR
   script:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - git version
-    - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master 
+    - ~/temp/commit.sh
