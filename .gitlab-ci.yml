@@ -1,6 +1,3 @@
-before_script:
-  - apt-get update && apt-get install
-  - apt install git-all
 stages:
   - createMR
 
