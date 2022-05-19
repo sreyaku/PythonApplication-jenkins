@@ -13,4 +13,5 @@ openMr:
     script:
         - echo 'hai..............'
         - git version
+        - git remote set-url origin https://gitlab.com/myrepo18/SampleProject.git/
         - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
