@@ -1,9 +1,13 @@
 stages:
-  - createMR
+  - openMr
 
 
 create_merge_request:
-  stage: createMR
+  before_script: [] # We do not need any setup work, let's remove the global one (if any)
+  variables:
+    GIT_STRATEGY: none # We do not need a clone of the GIT repository to create a Merge Request
+  stage: openMr
+  only:
+    - /^feature\/*/ # We have a very strict naming convention
   script:
-    - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - sh commit.sh
+    - merge-request.sh # The name of the script
