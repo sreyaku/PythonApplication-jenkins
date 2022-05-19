@@ -1,13 +1,17 @@
 stages:
-  - test_async
+  - source
+  - createMR
 
 
-test_async:
-  stage: test_async
+source:      
+  stage: source
   script:
-    - echo "Test Async"
-  only:
-    refs:
-      - merge_requests
-    variables:
-      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
+    - echo "this is a stage named source..."
+    - echo "this is a sample job created for study purpose......."
+
+
+create_merge_request:
+  stage: createMR
+  script:
+    - 'echo Merge request opened by $GITLAB_USER_NAME '
+    - ~/commit.sh
