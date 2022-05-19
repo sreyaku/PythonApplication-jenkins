@@ -5,4 +5,4 @@ stages:
 create_merge_request:
   stage: openMr
   script:
-    - merge-request.sh # The name of the script
+    - sh merge-request.sh # The name of the script
