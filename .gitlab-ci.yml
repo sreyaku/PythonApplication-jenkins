@@ -7,8 +7,6 @@ stages:
 
 create_merge_request:
   stage: createMR
-  tags:
-    - autoMR
   script:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
     - ~/temp/commit.sh
