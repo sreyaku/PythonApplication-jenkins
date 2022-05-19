@@ -9,6 +9,7 @@ variables:
 stages:         
   - source
   - docker-build
+  - approve
   - deploy
 
 source:      
@@ -22,15 +23,30 @@ docker-build:
   stage: docker-build 
   script:
     - echo "Running build...."
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE .
-    - docker push $CI_REGISTRY_IMAGE
-    - docker logout
+    # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    # - docker build -t $CI_REGISTRY_IMAGE .
+    # - docker push $CI_REGISTRY_IMAGE
+    # - docker logout
 
 
-deploy:      
-  stage: deploy  
+approve:
+  stage: approve
   script:
-    - echo "Deploying application..."
-    - echo "Using credentials $USERNAME, $PASSWORD "
-    - echo "Application successfully deployed."
+    - echo "Hello! this is manual approval stage"
+  # environment:
+  #   name: production
+  #   url: https://example.com
+  when: manual
+  allow_failure: false 
+  # only:
+  #   - master
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Hello!the application is deploying"
+  # environment:
+  #   name: production
+  #   url: https://example.com    
+  # only:
+  #   - master
