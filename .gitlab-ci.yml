@@ -1,17 +1,10 @@
 stages:
-  - source
   - createMR
-
-
-source:      
-  stage: source
-  script:
-    - echo "this is a stage named source..."
-    - echo "this is a sample job created for study purpose......."
 
 
 create_merge_request:
   stage: createMR
   script:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
+    - git version
     - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master 
