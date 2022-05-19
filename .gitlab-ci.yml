@@ -6,4 +6,4 @@ create_merge_request:
   stage: createMR
   script:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - ./commit.sh
+    - sh commit.sh
