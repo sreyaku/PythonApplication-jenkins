@@ -11,6 +11,7 @@ stages:
   - docker-build
   - approve
   - deploy
+  - merge-request
 
 source:      
   stage: source
@@ -50,3 +51,10 @@ deploy:
   #   url: https://example.com    
   # only:
   #   - master
+
+merge-request:
+  stage: merge-request
+  script:
+    - echo "This job runs in merge request pipelines"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
