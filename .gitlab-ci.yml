@@ -1,5 +1,5 @@
 before_script:
-  - sudo apt-get install git
+  - apt-get install git
 stages:
   - createMR
 
