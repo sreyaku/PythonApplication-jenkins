@@ -14,4 +14,4 @@ create_merge_request:
   stage: createMR
   script:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - ~/commit.sh
+    - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master 
