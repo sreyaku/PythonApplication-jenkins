@@ -13,5 +13,6 @@ openMr:
     script:
         - echo 'hai.............'
         - git version
-        - git clone https://BadhushaBava:gitlab@438@gitlab.com/myrepo18/SampleProject.git/
+        - url_host=`git remote get-url origin | sed -e "s/https:\/\/gitlab-ci-token:.*@//g"`
+        - git remote set-url origin "https://gitlab-ci-token:${CI_TAG_UPLOAD_TOKEN}@${url_host}"
         - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
