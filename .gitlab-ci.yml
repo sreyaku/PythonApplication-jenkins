@@ -1,18 +1,9 @@
 stages:
   - build
-  - test
-  - deploy
+
 
 build:
   stage: build
   script: echo "building........."
-
-test:
-  stage: test
-  script: echo "testing........."
   only:
-    - merge_requests
-
-deploy:
-  stage: deploy
-  script: echo "deploying........."
+    - master
