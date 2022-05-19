@@ -1,9 +1,13 @@
 stages:
-  - build
+  - test_async
 
 
-build:
-  stage: build
-  script: echo "building........."
+test_async:
+  stage: test_async
+  script:
+    - echo "Test Async"
   only:
-    - master
+    refs:
+      - merge_requests
+    variables:
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
