@@ -5,9 +5,10 @@ stages:
 
 
 openMr:
-    before_script: []   # We do not need any setup work, let's remove the global one (if any)
+    before_script:
+      - apk update && apk add git
+
     stage: openMr
-    # only:
-    #   - /^feature\/*/   # We have a very strict naming convention
+
     script:
-        - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} sh commit.sh # The name of the script
+        - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
