@@ -11,4 +11,6 @@ openMr:
     stage: openMr
 
     script:
+        - echo 'hai..............'
+        - git version
         - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
