@@ -56,5 +56,5 @@ merge-request:
   stage: merge-request
   script:
     - echo "This job runs in merge request pipelines"
-  # rules:
-  #   - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  only:
+    - merge_requests
