@@ -13,5 +13,4 @@ openMr:
     script:
         - echo 'hai............'
         - git version
-        - ssh-add -K ~/.ssh/[ssh key]
-        - git push -o ci-skip git@gitlab.com:myrepo18/SampleProject.git HEAD:master
+        - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
