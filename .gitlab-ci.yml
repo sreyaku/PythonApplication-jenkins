@@ -11,6 +11,5 @@ openMr:
     stage: openMr
 
     script:
-        - echo 'hai............'
-        - git version
-        - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
+    - 'echo Merge request opened by $GITLAB_USER_NAME '
+    - sh commit.sh
