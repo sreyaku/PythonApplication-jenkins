@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script was adapted from:
 # https://about.gitlab.com/2017/09/05/how-to-automatically-create-a-new-mr-on-gitlab-with-gitlab-ci/
-sudo apt install curl
+apt install curl
 curl --version
 # TODO determine URL from git repository URL
 [[ $HOST =~ ^https?://[^/]+ ]] && HOST="${BASH_REMATCH[0]}/api/v4/projects/"
