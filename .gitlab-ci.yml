@@ -7,12 +7,11 @@ stages:
 openMr:
     before_script:
       - apk update && apk add git
-      - git config --global user.name "${GITLAB_USER_NAME}"
-      - git config --global user.email "${GITLAB_USER_EMAIL}"
 
     stage: openMr
 
     script:
         - echo 'hai............'
         - git version
-        - git push origin HEAD:temp -o merge_request.create -o merge_request.target=master
+        - ssh-add -K ~/.ssh/[ssh key]
+        - git push -o ci-skip git@gitlab.com:myrepo18/SampleProject.git HEAD:master
