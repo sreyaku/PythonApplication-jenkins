@@ -3,8 +3,7 @@
 # https://about.gitlab.com/2017/09/05/how-to-automatically-create-a-new-mr-on-gitlab-with-gitlab-ci/
 apk add --update curl && rm -rf /var/cache/apk/*
 curl --version
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
-curl_setopt($ch, CURLOPT_TIMEOUT, 400); #timeout in seconds
+
 # TODO determine URL from git repository URL
 [[ $HOST =~ ^https?://[^/]+ ]] && HOST="${BASH_REMATCH[0]}/api/v4/projects/"
 
@@ -32,7 +31,7 @@ BODY="{
 
 # Require a list of all the merge request and take a look if there is already
 # one with the same source branch
- LISTMR=`curl --silent "${HOST}${CI_PROJECT_ID}/merge_requests?state=opened" --header "PRIVATE-TOKEN:${PRIVATE_TOKEN}"`;
+ LISTMR=`curl --connection-timeout 5 --silent "${HOST}${CI_PROJECT_ID}/merge_requests?state=opened" --header "PRIVATE-TOKEN:${PRIVATE_TOKEN}"`;
  COUNTBRANCHES=`echo ${LISTMR} | grep -o "\"source_branch\":\"${CI_COMMIT_REF_NAME}\"" | wc -l`;
 
 # No MR found, let's create a new one
