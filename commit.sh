@@ -1,8 +1,8 @@
 #!/bin/bash
 # This script was adapted from:
 # https://about.gitlab.com/2017/09/05/how-to-automatically-create-a-new-mr-on-gitlab-with-gitlab-ci/
-apk add --update curl && rm -rf /var/cache/apk/*
-curl --version
+# apk add --update curl && rm -rf /var/cache/apk/*
+# curl --version
 
 # TODO determine URL from git repository URL
 [[ $HOST =~ ^https?://[^/]+ ]] && HOST="${BASH_REMATCH[0]}/api/v4/projects/"
