@@ -8,10 +8,10 @@
 [[ $HOST =~ ^https?://[^/]+ ]] && HOST="${BASH_REMATCH[0]}/api/v4/projects/"
 
 # The branch which we wish to merge into
-TARGET_BRANCH=master;
+TARGET_BRANCH="master";
 
 # The user's token name so that we can open the merge request as the user
-TOKEN_NAME=`echo ${GITLAB_USER_LOGIN}_COMMIT_TOKEN | tr "[a-z]" "[A-Z]"`
+# TOKEN_NAME=`echo ${GITLAB_USER_LOGIN}_COMMIT_TOKEN | tr "[a-z]" "[A-Z]"`
 
 # See: http://www.tldp.org/LDP/abs/html/parameter-substitution.html search ${!varprefix*}, ${!varprefix@} section
 # PRIVATE_TOKEN=`echo ${!TOKEN_NAME}`
