@@ -1,20 +1,12 @@
 #!/bin/bash
 # This script was adapted from:
 # https://about.gitlab.com/2017/09/05/how-to-automatically-create-a-new-mr-on-gitlab-with-gitlab-ci/
-# apk add --update curl && rm -rf /var/cache/apk/*
-# curl --version
 
 # TODO determine URL from git repository URL
 [[ $HOST =~ ^https?://[^/]+ ]] && HOST="${BASH_REMATCH[0]}/api/v4/projects/"
 
 # The branch which we wish to merge into
 TARGET_BRANCH="master";
-
-# The user's token name so that we can open the merge request as the user
-# TOKEN_NAME=`echo ${GITLAB_USER_LOGIN}_COMMIT_TOKEN | tr "[a-z]" "[A-Z]"`
-
-# See: http://www.tldp.org/LDP/abs/html/parameter-substitution.html search ${!varprefix*}, ${!varprefix@} section
-# PRIVATE_TOKEN=`echo ${!TOKEN_NAME}`
 PRIVATE_TOKEN="glpat-v8K3z-ohHUf3LFbz6wwv"
 
 # The description of our new MR, we want to remove the branch after the MR has
