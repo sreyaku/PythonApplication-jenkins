@@ -7,6 +7,9 @@ stages:
 openMr:
     before_script:
       - apk update && apk add git
+      - apk add --update curl && rm -rf /var/cache/apk/*
+      - curl --version
+
 
     stage: openMr
 
