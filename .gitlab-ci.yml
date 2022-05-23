@@ -14,7 +14,7 @@ openMr:
     - 'echo Merge request opened by $GITLAB_USER_NAME '
     - apt-get update
     - apt-get -y install curl
-    - curl -version
+    - curl --version
     - echo ${CI_PROJECT_DIR}/commit.sh
     # - chmod +x ${CI_PROJECT_DIR}/commit.sh
     - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} ${CI_PROJECT_DIR}/commit.sh
