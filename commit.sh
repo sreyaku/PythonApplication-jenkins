@@ -15,7 +15,7 @@ TOKEN_NAME=`echo ${GITLAB_USER_LOGIN}_COMMIT_TOKEN | tr "[a-z]" "[A-Z]"`
 
 # See: http://www.tldp.org/LDP/abs/html/parameter-substitution.html search ${!varprefix*}, ${!varprefix@} section
 # PRIVATE_TOKEN=`echo ${!TOKEN_NAME}`
-PRIVATE_TOKEN=`glpat-v8K3z-ohHUf3LFbz6wwv`
+PRIVATE_TOKEN="glpat-v8K3z-ohHUf3LFbz6wwv"
 
 # The description of our new MR, we want to remove the branch after the MR has
 # been closed
