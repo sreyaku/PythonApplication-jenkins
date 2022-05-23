@@ -1,19 +1,21 @@
-before_script:
-  - apk add --update curl && rm -rf /var/cache/apk/*
+# before_script:
+#   - apk add --update curl && rm -rf /var/cache/apk/*
+variables:
+  PRIVATE_TOKEN: "glpat-v8K3z-ohHUf3LFbz6wwv"
 stages:
   - openMr
 
 
 openMr:
-    before_script:
-      - apk update && apk add git
-
     stage: openMr
 
     script:
-    - echo "auto merge requestb stage..........."
+    - echo "auto merge request stage..........."
     - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - echo ${CI_PROJECT_DIR}/.git/commit.sh
+    - apt-get update
+    - apt-get -y install curl
+    - curl -version
+    - echo ${CI_PROJECT_DIR}/commit.sh
     # - chmod +x ${CI_PROJECT_DIR}/commit.sh
-    - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} ${CI_PROJECT_DIR}/.git/commit.sh
+    - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} ${CI_PROJECT_DIR}/commit.sh
     # - sh commit.sh
