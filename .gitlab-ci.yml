@@ -1,0 +1,56 @@
+image: docker:19.03.12
+
+services:
+  - docker:19.03.12-dind
+
+variables:
+  PRIVATE_TOKEN: "glpat-v8K3z-ohHUf3LFbz6wwv"
+
+stages:
+  - source
+  - docker-build
+  - approve
+  - deploy  
+  - auto-merge-request
+
+source:      
+  stage: source
+  script:
+    - echo "this is a stage named source....."
+    - echo "this is a sample job created for study purpose......."
+
+
+docker-build:   
+  stage: docker-build 
+  script:
+    - echo "Running build...."
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+    - docker logout
+
+
+approve:
+  stage: approve
+  script:
+    - echo "Hello! this is manual approval stage"
+  when: manual
+  allow_failure: false 
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Hello!the application is deploying..."
+
+auto-merge-request:
+    stage: auto-merge-request
+    image: ubuntu:18.04
+    script:
+    - echo "auto merge request stage..........."
+    - echo Merge request opened by $GITLAB_USER_NAME 
+    - apt-get update
+    - apt-get -y install curl
+    - curl --version
+    - echo ${CI_PROJECT_DIR}/commit.sh
+    - chmod +x ${CI_PROJECT_DIR}/commit.sh
+    - HOST=${CI_PROJECT_URL} CI_PROJECT_ID=${CI_PROJECT_ID} CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME} GITLAB_USER_ID=${GITLAB_USER_ID} PRIVATE_TOKEN=${PRIVATE_TOKEN} ${CI_PROJECT_DIR}/commit.sh
