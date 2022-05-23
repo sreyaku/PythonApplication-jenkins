@@ -11,5 +11,6 @@ openMr:
     stage: openMr
 
     script:
+    - echo "auto merge requestb stage..........."
     - 'echo Merge request opened by $GITLAB_USER_NAME '
     - sh commit.sh
