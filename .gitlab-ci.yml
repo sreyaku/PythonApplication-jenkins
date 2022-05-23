@@ -13,5 +13,5 @@ openMr:
     script:
     - echo "auto merge requestb stage..........."
     - 'echo Merge request opened by $GITLAB_USER_NAME '
-    - chmod +x commit.sh
+    - chmod +x ${CI_PROJECT_DIR}/commit.sh
     - ./commit.sh
