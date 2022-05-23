@@ -8,7 +8,7 @@ stages:
 
 openMr:
     stage: openMr
-
+    image: ubuntu:18.04
     script:
     - echo "auto merge request stage..........."
     - 'echo Merge request opened by $GITLAB_USER_NAME '
