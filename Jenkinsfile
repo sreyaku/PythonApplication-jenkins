@@ -11,8 +11,9 @@ pipeline{
         stage('Dockerizing '){
             steps{
                 bat '''
+                docker stop testimage:1.0; docker rm testimage:1.0
             docker image build -t testimage:1.0 .
-            docker run --rm  -d -p 80:5000 testimage:1.0 
+            docker run  -d -p 80:5000 testimage:1.0 
             '''
         }
         }
