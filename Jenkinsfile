@@ -14,7 +14,7 @@ pipeline{
                 
             docker image build -t testimage:1.0 .
             //docker run  --rm -d -p 80:5000 testimage:1.0 
-             docker run -d -p 80:5000 --name mycontainer testimage:1.0
+             docker run -d -p 80:5000 --name yourcontainer testimage:1.0
             '''
         }
         }
