@@ -18,7 +18,7 @@ pipeline{
 //              docker run -d -p 80:5000 --name yourcontainer testimage:1.0
               sudo docker build -t webimage:$BUILD_NUMBER .
               sudo docker container run -itd --name webserver$BUILD_NUMBER -p 5000 webimage:$BUILD_NUMBER''' 
-            '''
+          
         }
         }
          }
