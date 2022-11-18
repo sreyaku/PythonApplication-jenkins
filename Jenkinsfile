@@ -11,13 +11,13 @@ pipeline{
         stage('Dockerizing '){
             steps{
                 sh '''
-//                 /docker container stop yourcontainer
-//             docker container rm yourcontainer
-//             docker image build -t testimage:1.0 .
+             docker container stop yourcontainer
+             docker container rm yourcontainer
+             docker image build -t testimage:1.0 .
 //             //docker run  --rm -d -p 80:5000 testimage:1.0
-//              docker run -d -p 80:5000 --name yourcontainer testimage:1.0
-              sudo docker build -t webimage:$BUILD_NUMBER .
-              sudo docker container run -itd --name webserver$BUILD_NUMBER -p 5000 webimage:$BUILD_NUMBER''' 
+             docker run -d -p 80:5000 --name yourcontainer testimage:1.0''' 
+//               sudo docker build -t webimage:$BUILD_NUMBER .
+//               sudo docker container run -itd --name webserver$BUILD_NUMBER -p 5000 webimage:$BUILD_NUMBER''' 
           
         }
         }
