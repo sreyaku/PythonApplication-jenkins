@@ -10,7 +10,7 @@ stages{
                
             }
         }
-            stage('Java_build') {
+            stage('python_build') {
                 steps {
                     script{
                         Pythondeploy()
